@@ -41,7 +41,7 @@ class RequestUser extends FormRequest
             'name' => 'required',
             'email' => 'required|unique:users',
             'gender_id' => 'required',
-            'age' => 'required|number',
+            'age' => 'required',
             'married' => 'required',
             'info' => 'required',
             'birthday' => 'required'
