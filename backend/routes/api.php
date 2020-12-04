@@ -14,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::resource('users', \App\Http\Controllers\UserController::class)->except('create', 'edit');
+Route::get('genders', function(){
+    $genders = \App\Models\Gender::all()->pluck('name', 'id');
+
+    return response()->json($genders);
 });
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
