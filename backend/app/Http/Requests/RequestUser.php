@@ -15,6 +15,20 @@ class RequestUser extends FormRequest
     {
         return true;
     }
+    public function messages()
+    {
+        return [
+            'name.required' => 'Name is required',
+            'email.required' => 'Email is required',
+            'email.unique' => 'Email is alredy taken',
+            'gender_id.required' => 'Select a gender',
+            'age.required' => 'required|number',
+            'age.required' => 'Age is required',
+            'age.number' => 'Age must be a valid date',
+            'info.required' => 'Info is required',
+            'birthday.required' => 'Birthday is required'
+        ];
+    }
 
     /**
      * Get the validation rules that apply to the request.
@@ -24,7 +38,13 @@ class RequestUser extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required',
+            'email' => 'required|unique:users',
+            'gender_id' => 'required',
+            'age' => 'required|number',
+            'married' => 'required',
+            'info' => 'required',
+            'birthday' => 'required'
         ];
     }
 }
